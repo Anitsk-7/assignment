@@ -8,12 +8,12 @@ void main(int argc,char** argv){
 	MPI_Comm_size(MPI_COMM_WORLD,&size);
 	if(rank==0){
 		scanf("%d",&var);
-		printf("Master sends %d to slave\n",var);
+		printf("%d send to slave\n",var);
 		MPI_Send(&var,1,MPI_INT,1,1,MPI_COMM_WORLD);
 	}
 	else if(rank==1){
 		MPI_Recv(&id,1,MPI_INT,0,1,MPI_COMM_WORLD,&status);
-		printf("%d is the value received by slave",id);
+		printf("slave receives %d\n",id);
 	}
 	
 	MPI_Finalize();

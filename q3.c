@@ -8,12 +8,12 @@ void main(int argc,char** argv){
 	MPI_Comm_size(MPI_COMM_WORLD,&size);
 	if(rank==0){
 		scanf("%d",&var);
-		printf("Root node sends %d to all others\n",var);
+		printf("%d is send\n",var);
 
 	}
 	
 		MPI_Bcast(&var,1,MPI_INT,0,MPI_COMM_WORLD);
-		printf("\n %d is the value received by process %d",var,rank);
+		printf("value received by process %d is %d\n",rank,var);
 	
 	MPI_Finalize();
 	
